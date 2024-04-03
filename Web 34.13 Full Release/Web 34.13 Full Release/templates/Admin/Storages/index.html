@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <title>Storage List</title>
+
+</head>
+<body>
+    <a href="/add">Add New Storage</a>
+    <h1>Storage List</h1>
+    <div class="menu">
+    <ul>
+        {% for storage in storages %}
+            <li>{{ storage['product'] }} ({{ storage['brand'] }}) - {{ storage['model'] }}
+                <form action="/delete/{{ storage['id'] }}" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+                <a href="/edit/{{ storage['id'] }}">Edit</a>
+            </li>
+        {% endfor %}
+    </ul>
+    </div>
+    <a href="/add">Add New Storage</a>
+</body>
+</html>

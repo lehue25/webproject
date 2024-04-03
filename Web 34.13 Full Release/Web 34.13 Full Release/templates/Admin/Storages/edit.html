@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Edit Storage</title>
+</head>
+<body>
+    <h1>Edit Storage</h1>
+    <form action="/edit/{{ storage['id'] }}" method="POST">
+        <label for="product">Product:</label>
+        <input type="text" id="product" name="product" value="{{ storage['product'] }}" required><br><br>
+
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" name="brand" value="{{ storage['brand'] }}" required><br><br>
+
+        <label for="rating">Rating:</label>
+        <input type="text" id="rating" name="rating" value="{{ storage['rating'] }}" required><br><br>
+
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" value="{{ storage['model'] }}" required><br><br>
+
+        <label for="picture">Picture URL:</label>
+        <input type="text" id="picture" name="picture" value="{{ storage['picture'] }}" required><br><br>
+
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" value="{{ storage['price'] }}" required><br><br>
+
+        <label for="RAM">RAM:</label>
+        <input type="text" id="RAM" name="RAM" value="{{ storage['RAM'] }}" required><br><br>
+
+        <label for="details">Details:</label>
+        <textarea id="details" name="details" required>{{ storage['details'] }}</textarea><br><br>
+
+        <button type="submit">Save</button>
+        <a href="/">Cancel</a>
+    </form>
+</body>
+</html>

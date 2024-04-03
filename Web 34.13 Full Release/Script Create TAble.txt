@@ -1,0 +1,19 @@
+CREATE TABLE "order" (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	"user_id"	int,
+	"user_email"	varchar(200),
+	"user_address"	varchar(200),
+	"user_mobile" int,
+	"purchase_date"	date,
+	"ship_date"	date,
+	"status"	INT
+);
+
+Create table order_details
+(
+	order_id int,
+	product_id int,
+	price NUMERIC,
+	quantity INT,
+	PRIMARY KEY (order_id, product_id)
+)

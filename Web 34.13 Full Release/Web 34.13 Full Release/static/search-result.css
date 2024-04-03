@@ -1,0 +1,30 @@
+/* styles.css */
+/* Your existing styles */
+/* search-result.css */
+#searchResult {
+    font-size: 18px;
+    color: #007bff;
+    margin-top: 20px;
+}
+
+.product-img{
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.products .container .row .col-md-4{
+    padding: 15px;
+
+
+}
+.products .container .row .col-md-4 .inside-box{
+    min-height: 350px;
+    border-radius: 15px;
+}
+.products .container .row .col-md-4 .inside-box .buttons{
+    position: absolute;
+    right: 33%;
+    bottom: 10%;
+
+
+}

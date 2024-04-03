@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Your shopping cart</title>
+    <link rel="stylesheet" href="{{ url_for('static',
+    filename='style_cart.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',
+    filename='styles_product.css') }}">
+</head>
+<body>
+    <h3>
+        {% if user_name %}
+            Hello, {{ user_name }} <a href="/logout">Logout</a>
+        {%  else  %}
+            You are not logged in. Please <a href="/login">Login</a>
+        {%  endif  %}
+    </h3>
+    <h1>Your shopping cart</h1>
+    <form method="POST" action="{{ url_for('update_cart') }}">
+        <table class="cart">
+            <thead>
+        <tr>
+            <th>Image</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Update Quantity</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in carts %}
+            <tr>
+                <td>
+                <img class="product-img" src="{{ product['picture'] }}"
+                             alt="{{ product['picture'] }}">
+                </td>
+                <td>{{ product['id'] }}</td>
+                <td>{{ product['name'] }}</td>
+                <td>${{ product['price'] }}</td>
+                <td>{{ product['quantity'] }}</td>
+                <td>
+                    <input type="number" name="quantity-{{ product['id'] }}"
+                           min="0" value="{{ product['quantity'] }}">
+                    <button type="submit" name="update-{{ product['id'] }}">
+                        Update</button>
+                </td>
+                <td>
+                    <input type="checkbox" name="delete-{{ product['id'] }}">
+                    <button type="submit" name="delete-{{ product['id'] }}">
+                        Delete</button>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+        </table>
+        <input type="submit" value="Update Cart">
+    </form>
+    <h1>Create Order</h1>
+    <form method="POST" action="{{ url_for('proceed_cart') }}">
+        <input type="submit" value="Proceed Cart">
+    </form>
+</body>
+</html>
